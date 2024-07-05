@@ -24,3 +24,5 @@
 - [ ] Testes existentes e novos passam com minhas mudanças
 - [ ] Quaisquer mudanças dependentes foram mescladas e publicadas nos módulos correspondentes
 
+## Declaração de Contribuição
+Eu, [Seu Nome], certifico que tenho o direito de licenciar o código que estou enviando. Ao enviar este pull request, entendo e concordo que meu código será sujeito à licença do projeto.
