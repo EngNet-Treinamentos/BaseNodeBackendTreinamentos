@@ -10,8 +10,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Motorista {
+  name           String   @db.VarChar(50)
+  cpf            String   @id @db.VarChar(15)
+  categoria_cnh  String   @db.VarChar(2)
+  vencimento_cnh DateTime @db.DateTime
+  carros         Carro[]
+}
 
-model Todo {
-  id    Int    @id @default(autoincrement()) @db.UnsignedInt
-  title String @db.VarChar(50)
+model Multa {
+  id          Int      @id @default(autoincrement()) @db.UnsignedInt
+  valor       Decimal  @db.Decimal(9, 2)
+  pontos      Int      @db.UnsignedInt
+  data        DateTime @db.DateTime
+  tipo        String   @db.VarChar(80)
+  placa_carro String   @db.VarChar(7)
+  carro       Carro    @relation(fields: [placa_carro], references: [placa])
+
+  @@index([placa_carro])
+}
+
+model Carro {
+  placa         String    @unique @db.VarChar(7)
+  marca         String    @db.VarChar(50)
+  modelo        String    @db.VarChar(50)
+  ano           Int       @db.UnsignedInt
+  cor           String    @db.VarChar(50)
+  motorista_cpf String    @id @db.VarChar(15)
+  motorista     Motorista @relation(fields: [motorista_cpf], references: [cpf])
+  multas        Multa[]
+
+  @@index([motorista_cpf])
 }
