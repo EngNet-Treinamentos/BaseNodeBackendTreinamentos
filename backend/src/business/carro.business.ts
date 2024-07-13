@@ -5,7 +5,7 @@ import createHttpError from "http-errors";
 export const list = async (carroData: Partial<Carro> = {}): Promise<Carro[]> => {
   const carros = await prisma.carro.findMany({
     select: {
-      motorista_cpf: true,
+      cpf: true,
       modelo: true,
       ano: true,
       placa: true,
@@ -19,13 +19,13 @@ export const list = async (carroData: Partial<Carro> = {}): Promise<Carro[]> => 
   return carros;
 };
 
-export const findCarroByMotoristaId = async (motorista_cpf: string): Promise<Carro | null> => {
+export const findCarroByMotoristaId = async (cpf: string): Promise<Carro | null> => {
   const carro = await prisma.carro.findFirst({
     where: {
-      motorista_cpf,
+      cpf,
     },
     select: {
-      motorista_cpf: true,
+      cpf: true,
       modelo: true,
       ano: true,
       placa: true,
@@ -46,7 +46,7 @@ export const findCarroByPlaca = async (placa: string): Promise<Carro | null> => 
       placa,
     },
     select: {
-      motorista_cpf: true,
+      cpf: true,
       modelo: true,
       ano: true,
       placa: true,
@@ -67,7 +67,7 @@ export const createCarro = async (carroData: Carro): Promise<Carro> => {
       ...carroData,
     },
     select: {
-      motorista_cpf: true,
+      cpf: true,
       modelo: true,
       ano: true,
       placa: true,
@@ -88,7 +88,7 @@ export const updateCarro = async ({ placa, ...carroData }: Carro): Promise<Carro
       ...carroData,
     },
     select: {
-      motorista_cpf: true,
+      cpf: true,
       modelo: true,
       ano: true,
       placa: true,
