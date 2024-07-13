@@ -1,0 +1,129 @@
+/* src/styles/Cadastrar.css */
+
+.cadastro-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fff;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .back-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .submit-button {
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    box-sizing: border-box;
+  }
+  
+  .submit-button:hover {
+    background-color: #333;
+  }
+  
+  @media (min-width: 600px) {
+    .form-container {
+      width: 80%;
+    }
+  
+    .logo {
+      width: 120px;
+    }
+  }
+  
+  /* Tablets in landscape mode and small desktops */
+  @media (min-width: 768px) {
+    .form-row {
+      flex-direction: row;
+      gap: 10px;
+    }
+  
+    .form-container {
+      width: 70%;
+    }
+  
+    .logo {
+      width: 140px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .form-container {
+      width: 60%;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .form-container {
+      width: 50%;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  }
+  
