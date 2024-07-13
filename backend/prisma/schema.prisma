@@ -11,8 +11,8 @@ datasource db {
 }
 
 model Motorista {
-  name           String   @db.VarChar(50)
-  cpf            String   @id @db.VarChar(15)
+  name           String   @db.VarChar(100)
+  cpf            String   @id @db.VarChar(11)
   categoria_cnh  String   @db.VarChar(2)
   vencimento_cnh DateTime @db.DateTime
   carros         Carro[]
@@ -32,13 +32,13 @@ model Multa {
 
 model Carro {
   placa         String    @unique @db.VarChar(7)
-  marca         String    @db.VarChar(50)
-  modelo        String    @db.VarChar(50)
+  marca         String    @db.VarChar(100)
+  modelo        String    @db.VarChar(100)
   ano           Int       @db.UnsignedInt
-  cor           String    @db.VarChar(50)
-  motorista_cpf String    @id @db.VarChar(15)
-  motorista     Motorista @relation(fields: [motorista_cpf], references: [cpf])
+  cor           String    @db.VarChar(100)
+  cpf String    @id @db.VarChar(11)
+  motorista     Motorista @relation(fields: [cpf], references: [cpf])
   multas        Multa[]
 
-  @@index([motorista_cpf])
+  @@index([cpf])
 }
