@@ -1,19 +1,23 @@
 import { z } from "zod";
+import Decimal from 'decimal.js';
+
+
+
 
 export const MultaSchema = z.object({
   id: z.number().int().positive(),
-  valor: z.number().int().positive(),
+  valor: z.instanceof(Decimal),
   pontos: z.number().int().positive(),
-  data: z.string().max(10),
-  tipo: z.string().max(80),
+  data: z.date(),
+  tipo: z.string().max(100),
   placa_carro: z.string().max(7),
 });
 
 export const MultaCreateSchema = z.object({
-  valor: z.number().int().positive(),
+  valor: z.instanceof(Decimal),
   pontos: z.number().int().positive(),
-  data: z.string().max(10),
-  tipo: z.string().max(80),
+  data: z.date(),
+  tipo: z.string().max(100),
   placa_carro: z.string().max(7),
 });
 

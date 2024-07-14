@@ -1,8 +1,8 @@
 import express from "express";
-import dotenv from "dotenv-safe";
 import helmet from "helmet";
 import cors from "cors";
 import "express-async-errors";
+import dotenv from "dotenv";
 
 import { prisma } from "./prisma";
 
@@ -10,9 +10,10 @@ import { handleZodError } from "./middlewares/handleZodError.middleware";
 import { handlePrismaError } from "./middlewares/handlePrismaError.middleware";
 import { handleCommonError } from "./middlewares/handleCommonError.middleware";
 
-import motoristaRoutes from "./routes/motorista.route";
+import carroRoutes from "./routes/carro.route";
 import carroRoutes from "./routes/carro.route";
 import multaRoutes from "./routes/multa.route";
+
 
 dotenv.config();
 
@@ -22,10 +23,11 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
-// Include your routes here
-app.use('/motoristas', motoristaRoutes);
-app.use('/carros', carroRoutes);
+
+app.use("/carros",carroRoutes);
+app.use("/motoristas",motoristasRoutes);
 app.use('/multas', multaRoutes);
+
 
 app.use(handleZodError);
 app.use(handlePrismaError);

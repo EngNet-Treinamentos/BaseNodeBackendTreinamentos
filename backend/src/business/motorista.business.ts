@@ -2,13 +2,14 @@ import { type Motorista } from "../schemas/motorista.schema";
 import { prisma } from "../prisma";
 import createHttpError from "http-errors";
 
+
 export async function list(motoristaData: Partial<Motorista> = {}): Promise<Motorista[]> {
   const motoristas = await prisma.motorista.findMany({
     select: {
-      id: true,
-      name: true,
       cpf: true,
-      cnh_id: true,
+      nome: true,
+      categoria_cnh: true,
+      vencimento_cnh: true,
     },
     where: {
       ...motoristaData,
@@ -24,10 +25,10 @@ export async function findMotoristaByCpf(cpf: string): Promise<Motorista | null>
       cpf,
     },
     select: {
-      id: true,
-      name: true,
+      nome: true,
       cpf: true,
-      cnh_id: true,
+      categoria_cnh: true,
+      vencimento_cnh: true,
     },
   });
 
@@ -38,35 +39,35 @@ export async function findMotoristaByCpf(cpf: string): Promise<Motorista | null>
   return motorista;
 }
 
-export async function createMotorista(ownerData: Motorista): Promise<Motorista> {
+export async function createMotorista(motoristaData: Motorista): Promise<Motorista> {
   const motorista = await prisma.motorista.create({
     data: {
-      ownerData,
+      ...motoristaData,
     },
     select: {
-      id: true,
-      name: true,
+      nome: true,
       cpf: true,
-      cnh_id: true,
+      categoria_cnh: true,
+      vencimento_cnh: true,
     },
   });
 
   return motorista;
 }
 
-export async function updateMotorista({ cpf, ...ownerData }: Motorista): Promise<Motorista> {
+export async function updateMotorista({ cpf, ...motoristaData }: Motorista): Promise<Motorista> {
   const motorista = await prisma.motorista.update({
     where: {
       cpf,
     },
     data: {
-      ...ownerData,
+      ...motoristaData,
     },
     select: {
-      id: true,
-      name: true,
+      nome: true,
       cpf: true,
-      cnh_id: true,
+      categoria_cnh: true,
+      vencimento_cnh: true,
     },
   });
 

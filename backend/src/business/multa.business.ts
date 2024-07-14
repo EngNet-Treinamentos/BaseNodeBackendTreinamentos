@@ -6,8 +6,11 @@ export async function list(multaData: Partial<Multa> = {}): Promise<Multa[]> {
   const multas = await prisma.multa.findMany({
     select: {
       id: true,
-      description: true,
-      value: true,
+      tipo: true,
+      valor: true,
+      pontos: true,
+      placa_carro:true,
+      data:true,
     },
     where: {
       ...multaData,
@@ -17,15 +20,18 @@ export async function list(multaData: Partial<Multa> = {}): Promise<Multa[]> {
   return multas;
 }
 
-export async function findMultasByMotoristaCpf(motoristaCpf: string): Promise<Multa[]> {
+export async function findMultasByCarro(placa_carro: string): Promise<Multa[]> {
   const multas = await prisma.multa.findMany({
     where: {
-      motoristaCpf,
+      placa_carro,
     },
     select: {
       id: true,
-      description: true,
-      value: true,
+      tipo: true,
+      valor: true,
+      pontos: true,
+      placa_carro:true,
+      data:true,
     },
   });
 
@@ -39,8 +45,11 @@ export async function findMultaById(id: number): Promise<Multa | null> {
     },
     select: {
       id: true,
-      description: true,
-      value: true,
+      tipo: true,
+      valor: true,
+      pontos: true,
+      placa_carro:true,
+      data:true,
     },
   });
 
@@ -58,8 +67,11 @@ export async function createMulta(multaData: MultaCreateDTO): Promise<Multa> {
     },
     select: {
       id: true,
-      description: true,
-      value: true,
+      tipo: true,
+      valor: true,
+      pontos: true,
+      placa_carro:true,
+      data:true,
     },
   });
 
@@ -76,8 +88,11 @@ export async function updateMulta(id: number, multaData: MultaCreateDTO): Promis
     },
     select: {
       id: true,
-      description: true,
-      value: true,
+      tipo: true,
+      valor: true,
+      pontos: true,
+      placa_carro:true,
+      data:true,
     },
   });
 

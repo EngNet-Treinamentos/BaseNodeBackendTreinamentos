@@ -7,18 +7,14 @@ import {
   deleteMotorista,
 } from "../business/motorista.business";
 import { findCarroByMotoristaId } from "../business/carro.business";
-import { findMultasByMotoristaCpf } from "../business/multa.business";
+import { findMultasByCarro} from "../business/multa.business";
 import { MotoristaIdSchema, MotoristaSchema } from "../schemas/motorista.schema";
 import createHttpError from "http-errors";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+  
 
   const motoristaParams = req.query;
 
@@ -28,11 +24,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+  
 
   const cpf = MotoristaIdSchema.parse(req.params.id);
   const motorista = await findMotoristaByCpf(cpf);
@@ -45,11 +37,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/:id/carros", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+ 
 
   const id = MotoristaIdSchema.parse(req.params.id);
   const carros = await findCarroByMotoristaId(id);
@@ -57,25 +45,18 @@ router.get("/:id/carros", async (req, res) => {
   return res.status(200).json(carros);
 });
 
+//ajustar
 router.get("/:id/multas", async (req, res) => {
-  const { userId } = req;
 
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
-  const cpf = MotoristaIdSchema.parse(req.params.id);
-  const multas = await findMultasByMotoristaCpf(cpf);
+  const placa = MotoristaIdSchema.parse(req.params.id);
+  const multas = await findMultasByCarro(placa);
 
   return res.status(200).json(multas);
 });
 
 router.post("/", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+  
 
   const motoristaData = MotoristaSchema.parse(req.body);
   const motorista = await createMotorista(motoristaData);
@@ -84,11 +65,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
+ 
 
   const cpf = MotoristaIdSchema.parse(req.params.id);
   const motoristaData = MotoristaSchema.parse(req.body);
