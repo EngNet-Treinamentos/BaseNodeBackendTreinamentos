@@ -10,13 +10,13 @@ const Cadastrar = () => {
   const navigate = useNavigate();
   const [nome,setNome] = useState('')
   const [cpf, setCpf] = useState('')
-  const [vencimentoCnh, setVencimentoCnh] = useState('')
-  const [categoriaCnh, setCategoriaCnh] = useState('')
+  const [vencimento_cnh, setVencimentoCnh] = useState('')
+  const [categoria_cnh, setCategoriaCnh] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const motorista = {nome,cpf,vencimentoCnh,categoriaCnh}
+      const motorista = {nome,cpf,vencimento_cnh,categoria_cnh}
       console.log('Dados do motorista: ' + motorista)
       const response = await cadastrarMotorista(motorista)
       alert('Motorista cadastrado com sucesso!')
@@ -44,11 +44,11 @@ const Cadastrar = () => {
           <div className="form-row">
             <div className="form-group">
               <label>Categoria CNH</label>
-              <input type="text" value={categoriaCnh} onChange = {(e) => setCategoriaCnh(e.target.value)} placeholder="Categoria CNH" required/>
+              <input type="text" value={categoria_cnh} onChange = {(e) => setCategoriaCnh(e.target.value)} placeholder="Categoria CNH" required/>
             </div>
             <div className="form-group">
               <label>Vencimento CNH</label>
-              <input type="text" value={vencimentoCnh} onChange = {(e) => setVencimentoCnh(e.target.value)} placeholder="Vencimento CNH" required/>
+              <input type="text" value={vencimento_cnh} onChange = {(e) => setVencimentoCnh(e.target.value)} placeholder="Vencimento CNH" required/>
             </div>
           </div>
           <button className="submit-button">Cadastrar</button>

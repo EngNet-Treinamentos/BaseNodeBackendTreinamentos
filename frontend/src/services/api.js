@@ -6,7 +6,7 @@ async function cadastrarMotorista(motorista) {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+        // Substitua pelo método de autenticação real
         },
         body: JSON.stringify(motorista)
     });
@@ -22,7 +22,7 @@ async function listarMotoristas() {
     const response = await fetch(`${API_URL}/motoristas`, {
         method: 'GET',
         headers: {
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+    // Substitua pelo método de autenticação real
         }
     });
 
@@ -39,7 +39,7 @@ async function cadastrarCarro(carro) {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+ // Substitua pelo método de autenticação real
         },
         body: JSON.stringify(carro)
     });
@@ -55,7 +55,7 @@ async function listarCarros() {
     const response = await fetch(`${API_URL}/carros`, {
         method: 'GET',
         headers: {
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+// Substitua pelo método de autenticação real
         }
     });
 
@@ -72,7 +72,7 @@ async function cadastrarMulta(multa) {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+// Substitua pelo método de autenticação real
         },
         body: JSON.stringify(multa)
     });
@@ -88,7 +88,7 @@ async function listarMultas() {
     const response = await fetch(`${API_URL}/multas`, {
         method: 'GET',
         headers: {
-        'Authorization': 'Bearer seu-token-aqui'  // Substitua pelo método de autenticação real
+ // Substitua pelo método de autenticação real
     }
     });
 
@@ -98,6 +98,7 @@ async function listarMultas() {
 
     return response.json();
 }
+
 
 export {
     cadastrarMotorista,

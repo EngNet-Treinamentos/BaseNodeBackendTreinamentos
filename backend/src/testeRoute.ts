@@ -19,10 +19,10 @@ async function testPostCarro() {
   const carroData = {
     marca: 'Toyota',
     modelo: 'Corolla',
-    ano: 2023,
+    ano: '2023',
     cor: 'Prata',
-    placa: 'ABC1234',
-    cpf: '12345678911'
+    placa: 'ABC1235',
+    cpf: '06519510114'
   };
 
   try {
@@ -38,7 +38,7 @@ async function testPostCarro() {
 async function testPostMotorista() {
   const carroData = {
     nome: 'Cadu',
-    cpf: '12345678911',
+    cpf: '12345623911',
     categoria_cnh: 'A',
     "vencimento_cnh": "2024-12-31T00:00:00.000Z"
   };

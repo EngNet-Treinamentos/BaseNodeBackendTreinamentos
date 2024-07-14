@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Visualizar.css';
 import detranLogo from './img/logo.png';
 import { useNavigate } from 'react-router-dom'; 
 import { FaExclamationTriangle, FaCar, FaEdit } from 'react-icons/fa'; // Importando os ícones de multas e veículo
+import { listarMotoristas, listarCarros, listarMultas } from './services/api';
 
 const Visualizar = () => {
   const navigate = useNavigate();
+  const [motoristas, setMotoristas] = useState([]);
+  const [carros, setCarros] = useState([]);
+  const [multas, setMultas] = useState([]);
 
-  const handleCadastrarVeiculo = () => {
-    navigate('/Cadastrar_carro');
-  };
-
-  const handleMultasClick = () => {
-    navigate('/multas');
-  };
-
-  const handleVeiculoClick = () => {
-    navigate('/veiculo');
-  };
-
-  const handleEditarClick = () => {
-    navigate('/');
-  };
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const motoristasList = await listarMotoristas();
+        const carrosList = await listarCarros();
+        const multasList = await listarMultas();
+        setMotoristas(motoristasList);
+        setCarros(carrosList);
+        setMultas(multasList);
+      } catch (error) {
+        console.error('Erro ao buscar dados:', error);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
@@ -43,25 +47,37 @@ const Visualizar = () => {
             </tr>
           </thead>
           <tbody>
-            {Array(10).fill().map((_, index) => (
-              <tr key={index}>
-                <td>Lucas Víctor</td>
-                <td>015.456.456.15</td>
-                <td>A e B</td>
-                <td>2028</td>
+            {motoristas.map((motorista) => (
+              <tr key={motorista.cpf}>
+                <td>{motorista.nome}</td>
+                <td>{motorista.cpf}</td>
+                <td>{motorista.categoria_cnh}</td>
+                <td>{motorista.vencimento_cnh}</td>
                 <td>
-                  <FaCar 
-                    className="veiculo-icon" onClick={handleVeiculoClick}
-                  />
+                  {carros
+                    .filter((carro) => carro.motoristaId === motorista.cpf)
+                    .map((carro) => (
+                      <div key={carro.placa}>
+                        <FaCar 
+                          className="veiculo-icon" onClick={() => navigate(`/veiculo/${carro.placa}`)}
+                        />
+                      </div>
+                    ))}
                 </td>
                 <td>
-                  <FaExclamationTriangle 
-                    className="multas-icon" onClick={handleMultasClick}
-                  />
+                  {multas
+                    .filter((multa) => multa.motoristaCpf === motorista.cpf)
+                    .map((multa) => (
+                      <div key={multa.id}>
+                        <FaExclamationTriangle 
+                          className="multas-icon" onClick={() => navigate(`/multas/${multa.id}`)}
+                        />
+                      </div>
+                    ))}
                 </td>
                 <td>
                   <FaEdit 
-                    className="veiculo-icon" onClick={handleEditarClick}
+                    className="veiculo-icon" onClick={() => navigate(`/editar/${motorista.cpf}`)}
                   />
                 </td>
               </tr>
@@ -70,7 +86,7 @@ const Visualizar = () => {
         </table>
       </div>
       <div className="buttons">
-        <button className="button" onClick={handleCadastrarVeiculo}>Cadastrar Veículo</button>
+        <button className="button" onClick={() => navigate('/Cadastrar_carro')}>Cadastrar Veículo</button>
         <button className="button" onClick={() => navigate('/cadastrar')}>Cadastrar Proprietário</button>
       </div>
     </div>

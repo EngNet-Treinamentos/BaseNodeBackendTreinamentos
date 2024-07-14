@@ -37,7 +37,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.get("/:id/carros", async (req, res) => {
- 
+
 
   const id = MotoristaIdSchema.parse(req.params.id);
   const carros = await findCarroByMotoristaId(id);
@@ -65,7 +65,6 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
- 
 
   const cpf = MotoristaIdSchema.parse(req.params.id);
   const motoristaData = MotoristaSchema.parse(req.body);
