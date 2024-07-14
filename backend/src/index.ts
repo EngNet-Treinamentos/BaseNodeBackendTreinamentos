@@ -11,7 +11,8 @@ import { handlePrismaError } from "./middlewares/handlePrismaError.middleware";
 import { handleCommonError } from "./middlewares/handleCommonError.middleware";
 
 import carroRoutes from "./routes/carro.route";
-import motoristasRoutes from "./routes/motorista.route";
+import carroRoutes from "./routes/carro.route";
+import multaRoutes from "./routes/multa.route";
 
 
 dotenv.config();
@@ -22,9 +23,10 @@ app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
-// Incluir suas rotas aqui
+
 app.use("/carros",carroRoutes);
 app.use("/motoristas",motoristasRoutes);
+app.use('/multas', multaRoutes);
 
 
 app.use(handleZodError);
