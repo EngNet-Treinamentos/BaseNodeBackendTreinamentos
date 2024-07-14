@@ -1,0 +1,97 @@
+body{
+    background-color: white;
+    width: 500px;
+    height: 700px;
+    padding: 60px;
+    box-sizing: border-box;
+    margin: auto;
+  }
+
+h1 {
+    font-family: Inter;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 43.57px;
+    text-align: center;
+
+}
+
+p {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.36px;
+    margin-top: 60px;
+    white-space: nowrap;
+}
+
+#placa p {
+    margin-right: 165.5px;
+}
+
+#marca p {
+    margin-right: 159.5px;
+}
+
+#modelo p {
+    margin-right: 150px;
+}
+
+#ano p {
+    margin-right: 177px;
+}
+
+#cor p {
+    margin-right: 179px;
+}
+
+#placa {
+    display: flex;
+}
+
+#marca {
+    display: flex;
+}
+
+#modelo {
+    display: flex;
+}
+
+#ano {
+    display: flex;
+}
+
+#cor {
+    display: flex;
+}
+
+#dados textarea {
+    float: right;
+    margin-top: 60px;
+    resize: none;
+}
+
+#salvar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 110px;
+
+    padding: 10px 24px;
+    width: 100px;
+    height: 50px;
+
+    background: rgba(134, 146, 206, 1);
+    border: 1px solid black;
+    border-radius: 90px;  
+}
+
+#salvar a {
+    text-decoration: none;
+    color: white;
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24.2px;
+}
