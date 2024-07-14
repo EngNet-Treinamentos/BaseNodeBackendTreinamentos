@@ -19,12 +19,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+ 
   const placa = CarroIdSchema.parse(req.params.id);
   const carro = await findCarroByPlaca(placa);
 
@@ -36,13 +31,10 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
 
   const carroData = CarroSchema.parse(req.body);
+  console.log(carroData);
+
   const carro = await createCarro(carroData);
 
   return res.status(201).json(carro);

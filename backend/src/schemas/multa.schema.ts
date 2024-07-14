@@ -1,29 +1,23 @@
 import { z } from "zod";
+import Decimal from 'decimal.js';
 
-export const InfracaoEnum = z.enum([
-  "Velocidade acima da máxima permitida",
-  "Estacionar em local proibido",
-  "Dirigir utilizando o celular",
-  "Dirigir sob efeito de álcool",
-  "Não utilizar cinto de segurança",
-  "Avançar o sinal vermelho",
-]);
+
 
 
 export const MultaSchema = z.object({
   id: z.number().int().positive(),
-  valor: z.number().min(0).max(999999.99), 
+  valor: z.instanceof(Decimal),
   pontos: z.number().int().positive(),
   data: z.date(),
-  tipo: InfracaoEnum,
+  tipo: z.string().max(100),
   placa_carro: z.string().max(7),
 });
 
 export const MultaCreateSchema = z.object({
-  valor: z.number().min(0).max(999999.99), 
+  valor: z.instanceof(Decimal),
   pontos: z.number().int().positive(),
   data: z.date(),
-  tipo: InfracaoEnum,
+  tipo: z.string().max(100),
   placa_carro: z.string().max(7),
 });
 

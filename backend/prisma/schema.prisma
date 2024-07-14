@@ -10,8 +10,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model Motorista {
-  name           String   @db.VarChar(100)
+  nome           String   @db.VarChar(100)
   cpf            String   @id @db.VarChar(11)
   categoria_cnh  String   @db.VarChar(2)
   vencimento_cnh DateTime @db.DateTime
@@ -20,7 +21,7 @@ model Motorista {
 
 model Multa {
   id          Int      @id @default(autoincrement()) @db.UnsignedInt
-  valor       Decimal  @db.Decimal(9, 2)
+  valor       Decimal    @db.Decimal(9, 2)
   pontos      Int      @db.UnsignedInt
   data        DateTime @db.DateTime
   tipo        String   @db.VarChar(80)

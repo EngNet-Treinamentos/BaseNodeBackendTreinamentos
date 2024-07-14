@@ -6,12 +6,7 @@ import { MultaCreateSchema, MultaIdSchema } from "../schemas/multa.schema";
 const router = Router();
 
 router.get("/", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+  
   const multaParams = req.query;
 
   const multas = await list(multaParams);
@@ -20,12 +15,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+  
   const id = MultaIdSchema.parse(req.params.id);
   const multa = await findMultaById(id);
 
@@ -37,12 +27,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+  
   const multaData = MultaCreateSchema.parse(req.body);
   const multa = await createMulta(multaData);
 
@@ -50,12 +35,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+  
   const id = MultaIdSchema.parse(req.params.id);
   const multaData = MultaCreateSchema.parse(req.body);
 
@@ -65,12 +45,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const { userId } = req;
-
-  if (userId === undefined) {
-    throw new createHttpError.Unauthorized("Usuário não autenticado");
-  }
-
+  
   const id = MultaIdSchema.parse(req.params.id);
 
   await deleteMulta(id);

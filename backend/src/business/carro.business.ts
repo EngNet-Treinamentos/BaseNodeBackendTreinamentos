@@ -7,6 +7,7 @@ export const list = async (carroData: Partial<Carro> = {}): Promise<Carro[]> => 
     select: {
       cpf: true,
       modelo: true,
+      marca:true,
       ano: true,
       placa: true,
       cor: true,
@@ -27,6 +28,7 @@ export const findCarroByMotoristaId = async (cpf: string): Promise<Carro | null>
     select: {
       cpf: true,
       modelo: true,
+      marca:true,
       ano: true,
       placa: true,
       cor: true,
@@ -48,6 +50,7 @@ export const findCarroByPlaca = async (placa: string): Promise<Carro | null> => 
     select: {
       cpf: true,
       modelo: true,
+      marca:true,
       ano: true,
       placa: true,
       cor: true,
@@ -69,6 +72,7 @@ export const createCarro = async (carroData: Carro): Promise<Carro> => {
     select: {
       cpf: true,
       modelo: true,
+      marca:true,
       ano: true,
       placa: true,
       cor: true,
@@ -90,6 +94,7 @@ export const updateCarro = async ({ placa, ...carroData }: Carro): Promise<Carro
     select: {
       cpf: true,
       modelo: true,
+      marca:true,
       ano: true,
       placa: true,
       cor: true,

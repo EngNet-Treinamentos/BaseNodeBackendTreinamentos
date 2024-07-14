@@ -21,7 +21,7 @@
       "modelo": "Focus",
       "ano": 2015,
       "cor": "Azul",
-      "cpf_motorista": "00000000000"
+      "cpf": "00000000000"
     }
     ```
   - Saída: (nenhuma)
