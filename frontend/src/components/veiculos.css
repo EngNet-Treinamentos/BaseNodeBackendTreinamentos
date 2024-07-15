@@ -1,0 +1,69 @@
+body {
+  background-color: white;
+  width: 83.33vw;
+  height: 50.35vh;
+  padding: 5.56vw 5.56vw 2.78vw 5.56vw;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+h1 {
+  text-align: left;
+  font-family: Inter;
+  font-size: 3.33vw;
+  font-weight: 400;
+  line-height: 4.03vw;
+  margin-bottom: 5.56vw;
+  margin-left: -30.25vw;
+}
+
+#voltar {
+  display: flex;
+  float: right;
+  justify-content: center;
+  align-items: center;
+  margin-top: -9.72vw;
+  margin-bottom: 3.47vw;
+  padding: 0.69vw 1.67vw;
+  width: 6.94vw;
+  height: 3.47vw;
+  background-color: rgba(134, 206, 189, 1);
+  border: 0.07vw solid black;
+  border-radius: 6.25vw;
+}
+
+#voltar a {
+  text-decoration: none;
+  color: white;
+  font-family: Inter;
+  font-size: 1.25vw;
+  font-weight: 400;
+  line-height: 1.68vw;
+}
+
+.custom-table {
+  width: 100%;
+  max-width: 165.97vw;
+  margin: auto;
+  height: 87.43vh;
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 2.74vw 4.72vw;
+  text-align: left;
+  border-bottom: 0.07vw solid black;
+  background-color: rgba(217, 217, 217, 1);
+}
+
+.custom-table th {
+  background-color: #f2f2f2;
+}
+
+.custom-table tbody tr:last-child td {
+  height: 100%;
+}
