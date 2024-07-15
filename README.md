@@ -90,3 +90,27 @@ Vocês irão escolher um membro do squad para realizar um fork deste repositóri
 - O trainee não deve excluir o repositório nem a release após a entrega, pois a utilização do GitHub será avaliada.
 
  - A data de entrega será para o dia 14/07/2024 as 23:59.
+
+
+
+
+ # Detran Sys
+
+Este projeto consiste em uma aplicação que inclui um backend e um frontend. Siga as instruções abaixo para configurar e rodar cada parte do projeto.
+
+## Rodando o Backend
+
+ ```npm install
+
+configure o arquivo .env 
+
+``` npx prisma generate
+``` npx prisma migrate
+``` npx prisma migrate dev
+``` npx ts-node src/index.ts
+
+
+## Rodando o Frontend
+
+ ```npm install
+  ```npm start
