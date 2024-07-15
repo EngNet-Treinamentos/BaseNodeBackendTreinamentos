@@ -99,18 +99,20 @@ Vocês irão escolher um membro do squad para realizar um fork deste repositóri
 Este projeto consiste em uma aplicação que inclui um backend e um frontend. Siga as instruções abaixo para configurar e rodar cada parte do projeto.
 
 ## Rodando o Backend
+``` npm install ```
 
- ```npm install
-
-configure o arquivo .env 
+### configure o arquivo .env 
 
 ``` npx prisma generate
-``` npx prisma migrate
-``` npx prisma migrate dev
-``` npx ts-node src/index.ts
+npx prisma migrate
+npx prisma migrate dev
+npx ts-node src/index.ts 
 
-
+```
 ## Rodando o Frontend
+```
+npm install
+npm start
 
- ```npm install
-  ```npm start
+```
+
