@@ -1,20 +1,28 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import './Veiculo.css';
 import detranLogo from './img/logo.png';
-import { FaExclamationTriangle, FaEdit } from 'react-icons/fa'; 
+import { FaExclamationTriangle, FaEdit } from 'react-icons/fa';
+import { listarCarrosPorCpf } from './services/api';
 
 const Veiculo = () => {
+  const { cpf } = useParams(); // Pega o CPF da URL
   const navigate = useNavigate();
+  const [veiculos, setVeiculos] = useState([]);
 
-  const veiculos = [
-    // Exemplo de dados de veículos
-    { placa: 'ABC-1234', marca: 'Fiat', modelo: 'Uno', ano: 2020, cor: 'Vermelho' },
-    { placa: 'XYZ-5678', marca: 'Ford', modelo: 'Ka', ano: 2018, cor: 'Azul' },
-  ];
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const veiculosList = await listarCarrosPorCpf(cpf);
+        setVeiculos(veiculosList);
+      } catch (error) {
+        console.error('Erro ao buscar veículos:', error);
+      }
+    }
+    fetchData();
+  }, [cpf]);
 
   const handleMultasClick = (placa) => {
-    
     navigate('/multas', { state: { placa } });
   };
 
@@ -42,7 +50,7 @@ const Veiculo = () => {
             </tr>
           </thead>
           <tbody>
-            {veiculos && veiculos.length > 0 ? (
+            {veiculos.length > 0 ? (
               veiculos.map((veiculo) => (
                 <tr key={veiculo.placa}>
                   <td>{veiculo.placa}</td>

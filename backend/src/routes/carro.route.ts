@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { list, createCarro, findCarroByPlaca, updateCarro, deleteCarro } from "../business/carro.business";
+import { list, createCarro, findCarroByPlaca, updateCarro, deleteCarro, findCarrosByMotoristaCpf } from "../business/carro.business";
 import createHttpError from "http-errors";
-import { CarroIdSchema, CarroSchema } from "../schemas/carro.schema";
+import { CarroIdSchema, CarroSchema, CarroCpfSchema } from "../schemas/carro.schema";
 
 const router = Router();
 
@@ -10,6 +10,17 @@ router.get("/", async (req, res) => {
   const carroParams = req.query;
 
   const carros = await list(carroParams);
+
+  return res.status(200).json(carros);
+});
+
+router.get("/cpf/:cpf", async (req, res) => {
+  const cpf = CarroCpfSchema.parse(req.params.cpf);
+  const carros = await findCarrosByMotoristaCpf(cpf);
+
+  if (carros === null) {
+    throw new createHttpError.NotFound("Carros not found");
+  }
 
   return res.status(200).json(carros);
 });

@@ -22,6 +22,7 @@ function App() {
           <Route path="/visualizar" element={<Visualizar />} />
           <Route path="/Cadastrar_carro" element={<CadastrarCarro />} />
           <Route path="/multas" element={<Multas fines={fines} />} />
+          <Route path="/veiculo/:cpf" element={<Veiculo />} /> {/* Adiciona a rota para Veiculo */}
         </Routes>
       </div>
     </Router>
