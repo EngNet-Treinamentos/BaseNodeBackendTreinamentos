@@ -11,7 +11,7 @@ import { handlePrismaError } from "./middlewares/handlePrismaError.middleware";
 import { handleCommonError } from "./middlewares/handleCommonError.middleware";
 
 import carroRoutes from "./routes/carro.route";
-import carroRoutes from "./routes/carro.route";
+import motoristasRoutes from "./routes/motorista.route";
 import multaRoutes from "./routes/multa.route";
 
 

@@ -32,12 +32,12 @@ model Multa {
 }
 
 model Carro {
-  placa         String    @unique @db.VarChar(7)
+  placa         String    @id @unique @db.VarChar(7)
   marca         String    @db.VarChar(100)
   modelo        String    @db.VarChar(100)
   ano           Int       @db.UnsignedInt
   cor           String    @db.VarChar(100)
-  cpf String    @id @db.VarChar(11)
+  cpf String    @db.VarChar(11)
   motorista     Motorista @relation(fields: [cpf], references: [cpf])
   multas        Multa[]
 
