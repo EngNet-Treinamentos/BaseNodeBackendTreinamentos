@@ -113,3 +113,6 @@ npx ts-node src/index.ts
 ```
 npm install
 npm start
+
+```
+
