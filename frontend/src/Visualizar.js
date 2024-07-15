@@ -54,26 +54,17 @@ const Visualizar = () => {
                 <td>{motorista.categoria_cnh}</td>
                 <td>{motorista.vencimento_cnh}</td>
                 <td>
-                  {carros
-                    .filter((carro) => carro.motoristaId === motorista.cpf)
-                    .map((carro) => (
-                      <div key={carro.placa}>
+                  
                         <FaCar 
-                          className="veiculo-icon" onClick={() => navigate(`/veiculo/${carro.placa}`)}
+                          className="veiculo-icon" onClick={() => navigate(`/veiculo/${motorista.cpf}`)}
                         />
-                      </div>
-                    ))}
                 </td>
                 <td>
-                  {multas
-                    .filter((multa) => multa.motoristaCpf === motorista.cpf)
-                    .map((multa) => (
-                      <div key={multa.id}>
+                  
                         <FaExclamationTriangle 
-                          className="multas-icon" onClick={() => navigate(`/multas/${multa.id}`)}
+                          className="multas-icon" onClick={() => navigate(`/multas`)}
                         />
-                      </div>
-                    ))}
+                      
                 </td>
                 <td>
                   <FaEdit 

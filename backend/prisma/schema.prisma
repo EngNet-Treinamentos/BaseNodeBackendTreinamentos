@@ -32,7 +32,7 @@ model Multa {
 }
 
 model Carro {
-  placa         String    @id @unique @db.VarChar(7)
+  placa         String    @id @db.VarChar(7)
   marca         String    @db.VarChar(100)
   modelo        String    @db.VarChar(100)
   ano           Int       @db.UnsignedInt

@@ -99,8 +99,23 @@ async function listarMultas() {
     return response.json();
 }
 
+async function listarCarrosPorCpf(cpf) {
+    const response = await fetch(`${API_URL}/carros/cpf/${cpf}`, {
+        method: 'GET',
+        headers: {
+            // Substitua pelo método de autenticação real, se necessário
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Falha ao listar carros por CPF');
+    }
+
+    return response.json();
+}
 
 export {
+    listarCarrosPorCpf,
     cadastrarMotorista,
     listarMotoristas,
     cadastrarCarro,

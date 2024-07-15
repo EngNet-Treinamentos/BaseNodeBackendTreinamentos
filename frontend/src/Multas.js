@@ -11,13 +11,14 @@ const Multas = () => {
   const [data, setData] = useState('')
   const [pontos, setPontos] = useState('')
   const [tipo, setTipo] = useState('')
-  const [veiculoId, setVeiculoId] = useState('')
+  const [placa_carro, setVeiculoId] = useState('')
   const [multas, setMultas] = useState([])
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const multa = { valor, data, pontos, tipo, veiculoId };
+      const multa = { valor, data, pontos, tipo, placa_carro };
       const response = await cadastrarMulta(multa);  // Uso da função de API
       alert('Multa cadastrada com sucesso!');
       console.log(response);
@@ -34,6 +35,23 @@ const Multas = () => {
         <div className="close-icon" onClick={() => navigate('/visualizar')}>✖</div>
       </div>
       <form onSubmit={handleSubmit}>
+        <div className="cadastrar-multa">
+          <label>Valor:</label>
+          <input type="text" value={valor} onChange={(e) => setValor(e.target.value)} />
+          <label>Data:</label>
+          <input type="str" value={data} onChange={(e) => setData(e.target.value)} />
+          <label>Pontos:</label>
+          <input type="number" value={pontos} onChange={(e) => setPontos(e.target.value)} />
+          <label>Tipo:</label>
+          <input type="text" value={tipo} onChange={(e) => setTipo(e.target.value)} />
+          <label>Placa:</label>
+          <input type="text" value={placa_carro} onChange={(e) => setVeiculoId(e.target.value)} />
+          <button type="submit">Cadastrar Multa</button>
+        </div>
+      </form>
+      <div className="buttons">
+        <button className="button" onClick={() => navigate('/Cadastrar_carro')}>Cadastrar Veículo</button>
+      </div>
         <div className="table-container">
           <table className="data-table">
             <thead>
@@ -42,7 +60,7 @@ const Multas = () => {
                 <th>Data</th>
                 <th>Pontos</th>
                 <th>Tipo</th>
-                <th>Veículo ID</th>
+                <th>Placa</th>
               </tr>
             </thead>
             <tbody>
@@ -53,7 +71,7 @@ const Multas = () => {
                     <td>{multa.data}</td>
                     <td>{multa.pontos}</td>
                     <td>{multa.tipo}</td>
-                    <td>{multa.veiculoId}</td>
+                    <td>{multa.placa_carro}</td>
                   </tr>
                 ))
               ) : (
@@ -64,23 +82,6 @@ const Multas = () => {
             </tbody>
           </table>
         </div>
-        <div>
-          <label>Valor:</label>
-          <input type="text" value={valor} onChange={(e) => setValor(e.target.value)} />
-          <label>Data:</label>
-          <input type="date" value={data} onChange={(e) => setData(e.target.value)} />
-          <label>Pontos:</label>
-          <input type="number" value={pontos} onChange={(e) => setPontos(e.target.value)} />
-          <label>Tipo:</label>
-          <input type="text" value={tipo} onChange={(e) => setTipo(e.target.value)} />
-          <label>Veículo ID:</label>
-          <input type="text" value={veiculoId} onChange={(e) => setVeiculoId(e.target.value)} />
-          <button type="submit">Cadastrar Multa</button>
-        </div>
-      </form>
-      <div className="buttons">
-        <button className="button" onClick={() => navigate('/Cadastrar_carro')}>Cadastrar Veículo</button>
-      </div>
     </div>
   );
 };

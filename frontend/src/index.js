@@ -19,7 +19,7 @@ root.render(
         <Route path="/visualizar" element={<Visualizar />} />
         <Route path="/Cadastrar_carro" element={<Carro />} />
         <Route path="/Multas" element={<Multas />} />
-        <Route path="/veiculo" element={<Veiculo />} /> {/* Adiciona a rota para Veiculo */}
+        <Route path="/veiculo/:cpf" element={<Veiculo />} /> {/* Adiciona a rota para Veiculo */}
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

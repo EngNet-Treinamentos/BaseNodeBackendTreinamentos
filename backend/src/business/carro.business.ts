@@ -111,3 +111,20 @@ export const deleteCarro = async (placa: string): Promise<void> => {
     },
   });
 };
+export async function findCarrosByMotoristaCpf(motoristaCpf: string): Promise<Carro[]> {
+  const carros = await prisma.carro.findMany({
+    where: {
+      cpf: motoristaCpf,
+    },
+    select: {
+      cpf: true,
+      modelo: true,
+      marca: true,
+      ano: true,
+      placa: true,
+      cor: true,
+    },
+  });
+  return carros;
+}
+

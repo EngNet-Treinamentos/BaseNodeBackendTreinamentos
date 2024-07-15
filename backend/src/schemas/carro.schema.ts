@@ -10,6 +10,9 @@ export const CarroSchema = z.object({
 });
 
 export const CarroIdSchema = z.string().max(7);
+export const CarroCpfSchema = z.string().max(11);
+
 
 export type Carro = z.infer<typeof CarroSchema>;
 export type CarroId = z.infer<typeof CarroIdSchema>;
+export type CarroCpf = z.infer<typeof CarroCpfSchema>;

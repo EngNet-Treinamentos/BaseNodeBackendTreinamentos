@@ -57,7 +57,7 @@ const Cadastrar_carro = () => {
             </div>
           </div>
           <div className="form-group">
-            <label>ID do Motorista</label>
+            <label>CPF do Motorista</label>
             <input type="text" value={cpf} onChange={(e) => setCpf(e.target.value)} placeholder="Digite o ID do motorista" required />
           </div>
           <button className="submit-button" type="submit">Cadastrar</button>
